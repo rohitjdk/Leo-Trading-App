@@ -3,24 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leo Trading App</title>
+    <title>Leo Trading</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Leo Trading App</h1>
-        </header>
-        <div class="market-data">
-            <h2>Live Market Price: <span id="live-price">$50,000</span></h2>
-        </div>
+        <h1>Leo Trading</h1>
+        
+        <!-- Live Crypto Market -->
+        <h2>Live Crypto Market</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Coin</th>
+                    <th>Price (USD)</th>
+                    <th>24h Change</th>
+                </tr>
+            </thead>
+            <tbody id="cryptoTable">
+                <!-- Data will be inserted dynamically -->
+            </tbody>
+        </table>
+
+        <!-- Trading Chart -->
+        <h2>Trading Chart</h2>
         <canvas id="tradingChart"></canvas>
-        <div class="trade-actions">
-            <button onclick="buy()">Buy</button>
-            <button onclick="sell()">Sell</button>
-        </div>
+
+        <!-- Trade Now Section -->
+        <h2>Trade Now</h2>
+        <input type="number" id="amount" placeholder="Enter Amount">
+        <button onclick="buyCrypto()">Buy</button>
+        <button onclick="sellCrypto()">Sell</button>
     </div>
+
     <script src="script.js"></script>
 </body>
-</html>
+                </html>
