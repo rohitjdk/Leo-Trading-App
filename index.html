@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leo Trading App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Leo Trading App</h1>
+        </header>
+        <div class="market-data">
+            <h2>Live Market Price: <span id="live-price">$50,000</span></h2>
+        </div>
+        <canvas id="tradingChart"></canvas>
+        <div class="trade-actions">
+            <button onclick="buy()">Buy</button>
+            <button onclick="sell()">Sell</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
