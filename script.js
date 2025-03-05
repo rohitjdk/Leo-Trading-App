@@ -1,34 +1,44 @@
-let price = 50000;
-const priceElement = document.getElementById('live-price');
-const ctx = document.getElementById('tradingChart').getContext('2d');
+// Fetch live market data (Simulated API Data)
+const cryptoData = [
+    { name: "Bitcoin (BTC)", price: 90353, change: 8.06 },
+    { name: "Ethereum (ETH)", price: 2227.40, change: 6.41 },
+    { name: "XRP (XRP)", price: 2.49, change: 5.98 },
+    { name: "Tether (USDT)", price: 1.00, change: 0.05 },
+    { name: "BNB (BNB)", price: 600.65, change: 5.60 }
+];
 
-const chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: [],
-        datasets: [{
-            label: 'Price',
-            borderColor: 'orange',
-            data: [],
-            fill: false
-        }]
-    },
-    options: { responsive: true, maintainAspectRatio: false }
-});
-
-function updatePrice() {
-    price += (Math.random() - 0.5) * 100;
-    priceElement.innerText = `$${price.toFixed(2)}`;
-    chart.data.labels.push(new Date().toLocaleTimeString());
-    chart.data.datasets[0].data.push(price);
-    if (chart.data.labels.length > 20) {
-        chart.data.labels.shift();
-        chart.data.datasets[0].data.shift();
-    }
-    chart.update();
+function updateCryptoTable() {
+    let tableBody = document.getElementById("cryptoTable");
+    tableBody.innerHTML = "";
+    cryptoData.forEach(coin => {
+        let row = `<tr>
+            <td>${coin.name}</td>
+            <td>$${coin.price.toFixed(2)}</td>
+            <td style="color: ${coin.change >= 0 ? 'green' : 'red'};">${coin.change.toFixed(2)}%</td>
+        </tr>`;
+        tableBody.innerHTML += row;
+    });
 }
 
-function buy() { alert('Buy order placed at ' + price.toFixed(2)); }
-function sell() { alert('Sell order placed at ' + price.toFixed(2)); }
+// Simulated Buy/Sell Functions
+function buyCrypto() {
+    let amount = document.getElementById("amount").value;
+    if (amount > 0) {
+        alert(`You bought crypto worth $${amount}`);
+    } else {
+        alert("Enter a valid amount!");
+    }
+}
 
-setInterval(updatePrice, 1000);
+function sellCrypto() {
+    let amount = document.getElementById("amount").value;
+    if (amount > 0) {
+        alert(`You sold crypto worth $${amount}`);
+    } else {
+        alert("Enter a valid amount!");
+    }
+}
+
+// Auto-update every 10 seconds
+setInterval(updateCryptoTable, 10000);
+updateCryptoTable();
